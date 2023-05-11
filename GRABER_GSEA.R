@@ -20,10 +20,10 @@ BiocManager::install("org.Mm.eg.db")
 
 library(tidyverse)
 library("readxl")
-res <- read_excel("C:/data/CORBIN/Graber/new/B.vs.A_adult and older.xlsx")
+res <- read_excel("~/B.vs.A_adult and older.xlsx")
 res
 
-res_e <- read_excel("C:/data/CORBIN/Graber/new/B.vs.control_E vs. A.xlsx")
+res_e <- read_excel("~/B.vs.control_E vs. A.xlsx")
 
 res2 <- res %>% 
   dplyr::select(gene_id, stat) %>% 
@@ -36,7 +36,7 @@ res2
 library(fgsea)
 ranks <- deframe(res2)
 head(ranks, 20)
-pathways.hallmark <- gmtPathways("C:/data/CORBIN/Graber/new713/MousePath_All_gmt-Format.gmt")
+pathways.hallmark <- gmtPathways("~/MousePath_All_gmt-Format.gmt")
 pathways.hallmark %>% 
   head() %>% 
   lapply(head)
@@ -76,6 +76,6 @@ elderly1 <- elderly[!duplicated(older$gene_id), ]
 older2 <- older %>% distinct(gene_id, .keep_all = TRUE)
 install.packages('xlsx')
 library(xlsx)
-write.xlsx(older1, "C:/data/CORBIN/Graber/new713/GSEA_adult_older_result.xlsx")
-write.xlsx(elderly1, "C:/data/CORBIN/Graber/new713/GSEA_adult_elderly_result.xlsx")
+write.xlsx(older1, "~/GSEA_adult_older_result.xlsx")
+write.xlsx(elderly1, "~/GSEA_adult_elderly_result.xlsx")
 
